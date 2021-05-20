@@ -138,7 +138,7 @@
             if (s < 10) {
                 s = "0" + s;
             }
-            document.getElementById('d').innerHTML = ~~(t / 1000 / 60 / 60 / 24);
+            document.getElementById('d').innerHTML = Math.floor(t / (24 * 3600 * 1000));
             document.getElementById('h').innerHTML = h;
             document.getElementById('m').innerHTML = m;
             document.getElementById('s').innerHTML = s;
