@@ -122,6 +122,16 @@
 
     <!-- 计时器 -->
     <script>
+        function daysDistance(date1, date2) {     
+            //parse() 是 Date 的一个静态方法 , 所以应该使用 Date.parse() 来调用，而不是作为 Date 的实例方法。返回该日期距离 1970/1/1 午夜时间的毫秒数
+            date1 = Date.parse(date1);
+            date2 = Date.parse(date2);
+            //计算两个日期之间相差的毫秒数的绝对值
+            var ms= Math.abs(date2 - date1);
+            //毫秒数除以一天的毫秒数,就得到了天数
+            var days = Math.floor(distance / (24 * 3600 * 1000));
+            return days ;
+        };
         function timer() {
             var start = new Date(2016, 12, 25, 00, 00, 00); // 2020.07.31 13:14:00
             var t = new Date() - start;
@@ -138,7 +148,7 @@
             if (s < 10) {
                 s = "0" + s;
             }
-            document.getElementById('d').innerHTML = Math.floor(t / (24 * 3600 * 1000));
+            document.getElementById('d').innerHTML = daysDistance(new Date(), start);
             document.getElementById('h').innerHTML = h;
             document.getElementById('m').innerHTML = m;
             document.getElementById('s').innerHTML = s;
@@ -146,6 +156,9 @@
         timer();
         setInterval(timer, 1000);
     </script>
+    
+
+
 
     <script>
         var oComments = document.querySelector("#comments");
